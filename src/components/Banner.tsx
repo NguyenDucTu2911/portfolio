@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Image from "../assets/avatar.svg";
 // icons
 import { FaGithub, FaFacebook, FaLinkedin } from "react-icons/fa";
@@ -7,8 +9,11 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 //vảiants
 import { fadeIn } from "../variants";
+import { useNavigate } from "react-router-dom";
+
 
 function Banner() {
+
     return (
         <section className="min-h-[85vh] lg:min-h-[78vh] flex items-center" id='home'>
             <div className="container mx-auto">
@@ -57,8 +62,15 @@ function Banner() {
                             whileInView="show"
                             viewport={{ once: false, amount: 0.7 }}
                             className="flex max-w-max gap-x-6 items-center mb-12 mx-auto lg:mx-0">
-                            <button className="btn btn-lg">Contact me</button>
-                            <a href="" className="text-gradient btn-link">My Portfolio</a>
+                            <button
+                                className="btn btn-lg"
+                            >
+                                Contact me
+                            </button>
+                            <a
+                                href=""
+                                className="text-gradient btn-link">My Portfolio
+                            </a>
                         </motion.div>
 
                         <motion.div
@@ -67,7 +79,7 @@ function Banner() {
                             whileInView="show"
                             viewport={{ once: false, amount: 0.7 }}
                             className="flex text-[20px] gap-x-6 max-w-max mx-auto lg:mx-0     ">
-                            <a href="www.linkedin.com/in/nguyenductu">
+                            <a className="  hover:text-sky-600 hover:bg-white" href="https://www.linkedin.com/in/nguyenductu/">
                                 <FaLinkedin />
                             </a>
 
@@ -91,6 +103,7 @@ function Banner() {
                 </div>
 
             </div>
+
         </section>
     )
 }

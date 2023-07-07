@@ -1,5 +1,12 @@
+import { useState } from "react"
+import Modal from "./Modal"
+import FormContact from "./FormContact"
+
 function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
+
         <header className='py-8'>
             <div className="container mx-auto">
                 <div className="flex justify-between items-center">
@@ -7,9 +14,17 @@ function Header() {
                     {/* <a href="#">
                         <img src={Logo} alt="logo" />
                     </a> */}
-                    <button className="btn btn-sm">Work with me</button>
+                    <button
+                        className="btn btn-sm"
+                        onClick={() => setIsOpen(true)}
+
+                    >Work with me</button>
                 </div>
             </div>
+            {/* modal */}
+            <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
+                <FormContact />
+            </Modal>
         </header>
     )
 }

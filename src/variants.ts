@@ -1,7 +1,6 @@
-import fadeInProps from "./types";
+import { fadeInProps } from "./types";
 
 export const fadeIn = ({ direction, delay }: fadeInProps) => {
-    console.log(delay)
     return {
         hidden: {
             y: direction === 'up' ? 80 : direction === 'down' ? -80 : 0,

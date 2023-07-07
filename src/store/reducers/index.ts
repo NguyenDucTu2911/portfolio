@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
-  
+import UserSlice from "../slices/UserSlice";
+import ContactSlice from "../slices/ContactSlice";
+
+
 const reducers = combineReducers({
-    // users: userSlice,
-    // events: eventSlice,
+    users: UserSlice,
+    contact: ContactSlice,
     // pay: paySlice,
 })
 
