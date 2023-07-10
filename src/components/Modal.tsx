@@ -4,12 +4,14 @@ import close from "../assets/close.svg";
 import { useForm, Resolver } from "react-hook-form";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
-import { useAppDispatch, useAppSelector } from "../store/Hooks";
-import { AddNewContact } from "../store/slices/ContactSlice";
+import { useAppSelector } from "../store/Hooks";
 import { RootState } from "../store/store";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ContactProps } from '../types';
+import { useDispatch } from 'react-redux';
+import { AnyAction } from "redux";
+import { sendDevice } from "../store/Contact/ContactThuck";
 
 const resolver: Resolver<ContactProps> = async (values) => {
     return {
@@ -43,7 +45,7 @@ interface isContactProps {
 
 function Modal({ isOpen, closeModal, children }: isContactProps) {
 
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const { error, loading } = useAppSelector((state: RootState) => state.contact)
 
     const {
@@ -55,14 +57,22 @@ function Modal({ isOpen, closeModal, children }: isContactProps) {
     const onSubmit = async (data: ContactProps) => {
         try {
             if (data && data.Email && data.Email && data.Message) {
-                dispatch(AddNewContact(data as ContactProps))
-                if (error != null) {
-                    toast.error(error)
-                } else {
-                    toast.success("Submission of information successful");
-                    reset();
-                    closeModal();
+                const newData = {
+                    ...data,
+                    CreateAt: new Date()
                 }
+                dispatch(
+                    sendDevice(newData.Name, newData.Message, newData.Email, newData.CreateAt) as unknown as AnyAction
+                )
+                    .then(() => {
+                        toast.success("Submission of information successful");
+                        reset();
+                        closeModal();
+                    })
+                    .catch(() => {
+                        toast.error(error)
+
+                    });
             } else {
                 console.log(error)
             }

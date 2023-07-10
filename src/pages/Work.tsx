@@ -3,8 +3,11 @@ import Image1 from "../assets/portfolio-img1.png";
 import Image2 from "../assets/portfolio-img2.png";
 import Image3 from "../assets/portfolio-img3.png";
 import { fadeIn } from "../variants";
+import { useNavigate } from "react-router-dom";
 
 function Work() {
+    const navigate = useNavigate()
+    
     return (
         <section className="section" id='work'>
             <div className="container mx-auto">
@@ -23,7 +26,10 @@ function Work() {
                                 doloremque explicabi!
                             </p>
 
-                            <button className='btn btn-lg'>View all projects</button>
+                            <button 
+                            className='btn btn-lg'
+                                onClick={() => navigate("Project")}
+                            >View all projects</button>
                         </div>
                         {/* image */}
                         <div className="group relative overflow-hidden border-2

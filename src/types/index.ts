@@ -19,4 +19,17 @@ export interface ContactProps {
     Name: string,
     Message: string,
     Email: string,
+    CreateAt: Date,
+    Contacts?: string[]
+}
+
+export interface SearchFrameworkProps {
+    selected: string,
+    setSelected: (selected: string) => void;
+}
+
+export interface SearchSearchBarProps {
+    setSearchFramework: (searchSearchFramework: string) => void;
+    // setModel: (searchModel: string) => void;
+
 }

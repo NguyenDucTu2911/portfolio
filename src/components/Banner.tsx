@@ -9,7 +9,6 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 //vảiants
 import { fadeIn } from "../variants";
-import { useNavigate } from "react-router-dom";
 
 
 function Banner() {

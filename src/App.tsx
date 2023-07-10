@@ -5,6 +5,7 @@ import React, { ReactElement, useEffect } from "react";
 import { apolloClient } from "./graphQL/Client";
 import { ApolloProvider } from '@apollo/client/react';
 import { Spinner } from "./components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Banner = React.lazy(() => import('./components/Banner'));
 const Header = React.lazy(() => import('./components/Header'));

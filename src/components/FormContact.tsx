@@ -2,11 +2,13 @@ import { useForm, Resolver } from "react-hook-form";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
 import { ContactProps } from "../types";
-import { useAppDispatch, useAppSelector } from "../store/Hooks";
-import { AddNewContact } from "../store/slices/ContactSlice";
+import { useAppSelector } from "../store/Hooks";
 import { RootState } from "../store/store";
+import { sendDevice } from "../store/Contact/ContactThuck";
+import { AnyAction } from "redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
 
 const resolver: Resolver<ContactProps> = async (values) => {
     return {
@@ -34,7 +36,7 @@ const resolver: Resolver<ContactProps> = async (values) => {
 
 
 function FormContact() {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const { error, loading } = useAppSelector((state: RootState) => state.contact)
 
     const {
@@ -45,17 +47,21 @@ function FormContact() {
     } = useForm<ContactProps>({ resolver })
     const onSubmit = async (data: ContactProps) => {
         try {
-            if (data && data.Email && data.Email && data.Message) {
-                dispatch(AddNewContact(data as ContactProps))
-                if (error != null) {
-                    toast.error(error)
-                } else {
+            const newData = {
+                ...data,
+                CreateAt: new Date()
+            }
+            dispatch(
+                sendDevice(newData.Name, newData.Message, newData.Email, newData.CreateAt) as unknown as AnyAction
+            )
+                .then(() => {
                     toast.success("Submission of information successful");
                     reset();
-                }
-            } else {
-                console.log(error)
-            }
+                })
+                .catch(() => {
+                    toast.error(error)
+
+                });
         } catch (e) {
             console.log(e);
         }

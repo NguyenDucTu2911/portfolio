@@ -1,18 +1,11 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 import { useEffect } from "react";
-import { useAppDispatch } from "../store/Hooks";
-import { fetchProgressions } from "../store/slices/UserSlice";
 import { FormContact } from "../components";
 
 
 function Contact() {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProgressions())
-  }, [])
-
+  
   return (
     <section className="py-16 lg:section" id='contact'>
       <div className="container mx-auto">
