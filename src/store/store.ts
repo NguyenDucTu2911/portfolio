@@ -9,7 +9,7 @@ import { routerMiddleware, connectRouter } from "connected-react-router";
 import { PersistConfig, persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { ThunkDispatch } from "redux-thunk";
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
 import ContactSlice from "./contact/ContactSlice";
 import FrameworkSlice from "./framework/FrameworkSlice";
 import ProjectSlice from "./project/ProjectSlice";
@@ -30,10 +30,10 @@ export type AppThunk<ReturnType = void> = ThunkAction<
     Action<string>
 >;
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 // Create the router middleware
-const routerMiddlewareInstance = routerMiddleware(history);
+// const routerMiddlewareInstance = routerMiddleware(history);
 
 // Define persist config for each slice
 const contactPersistConfig: PersistConfig<any> = {
@@ -64,13 +64,14 @@ const persistedRootReducer = combineReducers({
     contact: persistedContactReducer,
     Framework: persistedFrameworkReducer,
     Project: persistedProjectReducer,
-    router: connectRouter(history),
+    // router: connectRouter(history),
 });
 
 // Configure store with thunk middleware
 const store = configureStore({
     reducer: persistedRootReducer,
-    middleware: [...getDefaultMiddleware({ serializableCheck: false }), routerMiddlewareInstance],
+    // middleware: [...getDefaultMiddleware({ serializableCheck: false }), routerMiddlewareInstance],
+    middleware: [...getDefaultMiddleware({ serializableCheck: false })],
 });
 
 const persistor = persistStore(store);
