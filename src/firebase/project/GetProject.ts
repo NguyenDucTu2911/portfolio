@@ -11,7 +11,7 @@ export const GetProject = async ({ framework, language, limit }: ProjectProps): 
             console.log("ca hai");
         } else if (framework) {
             data = query.where("framework", "==", framework);
-            console.log("nodejs", framework );
+            console.log("nodejs", framework);
         } else if (language) {
             data = query.where("language", "==", language);
             console.log("javascript");

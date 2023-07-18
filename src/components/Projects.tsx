@@ -26,13 +26,13 @@ function Projects() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        ferchProject();
+        ferchProject(SearchLanguage, SearchFramework, limit);
         return () => {
             ferchProject()
         }
     }, [SearchLanguage, SearchFramework, limit]);
 
-    const ferchProject = async () => {
+    const ferchProject = async (SearchFramework?: string, SearchLanguage?: string, limit?: number) => {
         dispatch(await fetchProjectThunk({
             framework: SearchFramework,
             language: SearchLanguage,
