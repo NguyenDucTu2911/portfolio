@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 function Breadcrumb() {
-    const [location, setlocation] = useState("")
+    const [location, setLocation] = useState("")
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -14,8 +14,9 @@ function Breadcrumb() {
 
     const checkLocation = () => {
         if (pathname) {
-            const location = pathname.replace('/', '');
-            setlocation(location);
+            const pathSegments = pathname.split('/');
+            const location = pathSegments[1];
+            setLocation(location);
         }
     }
 

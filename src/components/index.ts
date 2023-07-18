@@ -9,8 +9,9 @@ import Projects from "./Projects";
 import Breadcrumb from "./Breadcrumb";
 import Searchbar from "./Searchbar";
 import SearchFramework from "./SearchFramework";
+import ProjectDetail from "./ProjectDetail";
 
 export {
     Header, Nav, Banner, ErrorPage, FormContact, Modal, Spinner, Projects, Breadcrumb,
-    Searchbar, SearchFramework
+    Searchbar, SearchFramework, ProjectDetail
 }

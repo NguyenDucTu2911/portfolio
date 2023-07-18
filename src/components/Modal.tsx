@@ -5,13 +5,13 @@ import { useForm, Resolver } from "react-hook-form";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
 import { useAppSelector } from "../store/Hooks";
-import { RootState } from "../store/store";
+import { RootState } from '../store/store';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ContactProps } from '../types';
 import { useDispatch } from 'react-redux';
 import { AnyAction } from "redux";
-import { sendDevice } from "../store/Contact/ContactThuck";
+import { sendContact } from '../store/contact/ContactThuck';
 
 const resolver: Resolver<ContactProps> = async (values) => {
     return {
@@ -62,7 +62,7 @@ function Modal({ isOpen, closeModal, children }: isContactProps) {
                     CreateAt: new Date()
                 }
                 dispatch(
-                    sendDevice(newData.Name, newData.Message, newData.Email, newData.CreateAt) as unknown as AnyAction
+                    sendContact(newData.Name, newData.Message, newData.Email, newData.CreateAt) as unknown as AnyAction
                 )
                     .then(() => {
                         toast.success("Submission of information successful");

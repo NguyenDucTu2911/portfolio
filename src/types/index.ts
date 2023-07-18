@@ -30,6 +30,39 @@ export interface SearchFrameworkProps {
 
 export interface SearchSearchBarProps {
     setSearchFramework: (searchSearchFramework: string) => void;
-    // setModel: (searchModel: string) => void;
+    setSearchLanguage: (setSearchLanguage: string) => void;
 
+}
+
+export interface FrameworkProps {
+    id: string,
+    value: string,
+    Framework?: string[]
+}
+
+interface imagesProps {
+    id: string,
+    image1: string,
+    image2: string,
+    image3: string,
+    images: string[];
+}
+
+export interface ProjectProps {
+    id?: string,
+    framework?: string,
+    language?: string,
+    nameProject?: string,
+    Source?: string,
+    image?: string
+    limit?: number,
+    Project?: string[];
+    images?: imagesProps[]
+}
+
+export interface ShowMoreProps {
+    pageNumber: number;
+    isNext: boolean;
+    isHidden: boolean;
+    setLimit: (Limit: number) => void
 }

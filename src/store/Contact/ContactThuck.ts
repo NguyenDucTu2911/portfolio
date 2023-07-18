@@ -1,10 +1,10 @@
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../store";
 import { createContact } from "../../firebase/contact/CreateContact";
-import { sendContactStart, sendContactSuccess, sendContactFailure } from "./ContactSlice";
+import { sendContactStart, sendContactSuccess, sendContactFailure } from "../contact/ContactSlice";
 import { Action } from "redux";
 
-export const sendDevice =
+export const sendContact =
     (
         Name: string,
         Message: string,

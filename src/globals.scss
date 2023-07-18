@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 .backgroudModal{
    background: linear-gradient(92.23deg,
@@ -17,14 +19,13 @@
             #3bace2 100%,
             #406aff 117.04%);
     box-shadow: 0px 4.42184px 107.23px rgba(255, 86, 246, 0.51);
-}
-
-.btn:hover{
-background: linear-gradient(92.23deg,
-                #ff56f6 21.43%,
-                #b936ee 50.63%,
-                #3bace2 100%,
-                #406aff 117.04%);
+    &:hover{
+        background: linear-gradient(92.23deg,
+                    #ff56f6 21.43%,
+                    #b936ee 50.63%,
+                    #3bace2 100%,
+                    #406aff 117.04%);
+    }
 }
 
 .gradient,
@@ -41,6 +42,11 @@ background: linear-gradient(92.23deg,
     color: #fff;
     padding: 1rem;
     border-radius: 100%;
+}
+
+/* custom slick slide*/
+.slick-slide.slick-active {      
+    padding: 0 5px;
 }
 
 @layer base {
@@ -82,15 +88,15 @@ background: linear-gradient(92.23deg,
 
     /* START: searchbar styles */
     .searchbar {
-    @apply flex items-center justify-start pb-2 max-sm:flex-col w-full relative max-sm:gap-4 max-w-3xl;
+        @apply flex justify-start pb-2 w-full relative max-w-xs;
     }
 
     .searchbar__item {
-    @apply flex-1 max-sm:w-full flex justify-start items-center relative;
+        @apply flex-1 flex justify-start items-center relative;
     }
 
     .searchbar__input {
-    @apply w-full h-[48px] pl-12 p-4 bg-light-white rounded-r-full max-sm:rounded-full outline-none cursor-pointer text-sm;
+        @apply w-full h-[48px] pl-5 p-4 rounded-r-md  bg-fuchsia-500 outline-none cursor-pointer text-white font-medium;
     }
     /* END: searchbar styles */
 }

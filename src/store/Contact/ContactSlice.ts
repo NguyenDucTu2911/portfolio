@@ -24,7 +24,7 @@ const ContactSlice = createSlice({
         sendContactSuccess(state, action) {
             state.loading = false;
             state.error = null;
-            state.Contact.push(action.payload)
+            state.Contact.push (action.payload)
         },
         sendContactFailure(state, action: PayloadAction<string>) {
             state.loading = false;

@@ -4,7 +4,7 @@ import { fadeIn } from '../variants';
 import { ContactProps } from "../types";
 import { useAppSelector } from "../store/Hooks";
 import { RootState } from "../store/store";
-import { sendDevice } from "../store/Contact/ContactThuck";
+import { sendContact } from "../store/contact/ContactThuck";
 import { AnyAction } from "redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -52,7 +52,7 @@ function FormContact() {
                 CreateAt: new Date()
             }
             dispatch(
-                sendDevice(newData.Name, newData.Message, newData.Email, newData.CreateAt) as unknown as AnyAction
+                sendContact(newData.Name, newData.Message, newData.Email, newData.CreateAt) as unknown as AnyAction
             )
                 .then(() => {
                     toast.success("Submission of information successful");
