@@ -2,10 +2,7 @@ import React, { ReactElement, useEffect } from "react";
 
 // import { Banner, Header, Nav } from "./components";
 // import { About, Contact, Work } from "./pages";
-import { apolloClient } from "./graphQL/Client";
-import { ApolloProvider } from '@apollo/client/react';
 import { Spinner } from "./components";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Banner = React.lazy(() => import('./components/Banner'));
 const Header = React.lazy(() => import('./components/Header'));
@@ -32,7 +29,6 @@ function App() {
   }, []);
 
   return (
-    <ApolloProvider client={apolloClient}>
       <SuspenseWrapper>
         <main className="bg-site bg-no-repeat bg-cover overflow-hidden">
           <Header />
@@ -43,8 +39,6 @@ function App() {
           <Contact />
         </main>
       </SuspenseWrapper>
-    </ApolloProvider>
-
   );
 }
 
