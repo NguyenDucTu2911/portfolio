@@ -48,6 +48,17 @@ interface imagesProps {
     images: string[];
 }
 
+export interface UserProps {
+    id: string,
+    FirstName: string,
+    LastName: string,
+    description: string,
+    YearsOld: number,
+    yearsOfExperience: number,
+    AboutDescription: string,
+    MyWork: string
+}
+
 export interface ProjectProps {
     id?: string,
     framework?: string,
